@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { DbService } from '../../services/db.service';
+import { RegistrationPageForm } from './registration.page.form';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { DbService } from '../../services/db.service';
   styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
-  registrationForm: FormGroup;
+  form: FormGroup;
   data: any[] = [];
 
   constructor(
@@ -18,6 +19,9 @@ export class RegistrationPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.form = new RegistrationPageForm(this.formBuilder).createForm();
+
     this.db.dbState().subscribe((res) => {
       if(res){
         this.db.fetchUsers().subscribe(item => {
@@ -25,18 +29,14 @@ export class RegistrationPage implements OnInit {
         });
       }
     });
-    this.registrationForm = this.formBuilder.group({
-      login: [''],
-      password: ['']
-    });
   }
 
   storeData() {
     this.db.addUser(
-      this.registrationForm.value.login,
-      this.registrationForm.value.password
+      this.form.value.login,
+      this.form.value.password
     ).then((res) => {
-      this.registrationForm.reset();
+      this.form.reset();
     });
   };
 

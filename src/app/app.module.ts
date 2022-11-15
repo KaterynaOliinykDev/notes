@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -18,12 +19,14 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     SQLite,
     SQLitePorter,
-    { provide: RouteReuseStrategy,  useClass: IonicRouteStrategy}
+    { provide: RouteReuseStrategy,  useClass: IonicRouteStrategy, }
   ],
   bootstrap: [AppComponent],
 })

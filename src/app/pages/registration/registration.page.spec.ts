@@ -21,4 +21,8 @@ describe('RegistrationPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should create form on init', () => {
+    component.ngOnInit();
+    expect(component.form).toBeUndefined();
+ });
 });
