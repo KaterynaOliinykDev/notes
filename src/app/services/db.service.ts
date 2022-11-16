@@ -80,7 +80,16 @@ export class DbService{
       });
     }
 
-    updateUser(id, user: Users) {
+    getUser(login, password) {
+      const data = [login, password];
+      return this.storage.executeSql('SELECT id from users where login = ? and password = ? ', data).
+      then(res => {
+        const id = res.rows.item(0);
+        return id;
+      });
+    }
+
+    updateUser(id, user: Users){
       const data = [user.login, user.password];
       return this.storage.executeSql(`UPDATE users SET login = ?, passsword = ? WHERE id = ${id}`, data)
       .then(res => {
@@ -94,6 +103,5 @@ export class DbService{
         this.getUsers();
       });
     }
-
  }
 
