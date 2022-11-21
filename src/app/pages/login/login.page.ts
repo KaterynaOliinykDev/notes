@@ -47,6 +47,6 @@ export class LoginPage implements OnInit {
   };
 
   loadProfile(id){
-    this.router.navigate(['registration/', id]);
+    this.router.navigate(['notes']);
   }
 }

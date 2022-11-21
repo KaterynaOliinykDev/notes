@@ -12,9 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SortPipe } from './sort.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SortPipe],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -26,6 +27,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
   providers: [
     SQLite,
     SQLitePorter,
+    SortPipe,
     { provide: RouteReuseStrategy,  useClass: IonicRouteStrategy, }
   ],
   bootstrap: [AppComponent],
