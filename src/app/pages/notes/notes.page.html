@@ -1,0 +1,21 @@
+<ion-content>
+<ion-searchbar color="success" [debounce]="1000" (ionChange)="handleChange($event)"></ion-searchbar>
+
+<ion-list>
+  <ion-item *ngFor="let result of results">
+    <ion-label>{{ result.name }}</ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>
+<ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col><ion-button size="full" color="success" (click)="sortNotesByName(results)">Name <ion-icon name= {{iconName}}></ion-icon></ion-button>
+      </ion-col>
+      <ion-col><ion-button size="full" color="success">Create</ion-button></ion-col>
+      <ion-col><ion-button size="full" color="success">Update</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-toolbar>
+
